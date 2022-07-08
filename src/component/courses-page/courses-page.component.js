@@ -12,7 +12,6 @@ export const CoursesPage = () => {
       <div className='course-page-container'>
         <Routes>
           <Route index element={<CourseTable />} ></Route>
-          <Route path=':id' element={<CourseTable />} ></Route>
         </Routes>
         <CourseForm />
       </div>

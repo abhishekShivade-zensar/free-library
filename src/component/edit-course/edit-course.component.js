@@ -1,40 +1,42 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export const EditCourse = () => {
-        let History = useNavigate()
-        const {id} = useParams()
+    let History = useNavigate()
+    const { id } = useParams()
 
-        const [course, setCourse] = useState({
-            title: "",
-            slug: "",
-            authorId: "",
-            category: ""
-        })
+    const [course, setCourse] = useState({
+        title: "",
+        slug: "",
+        authorId: "",
+        category: ""
+    })
 
-        const { title, slug, authorId, category } = course
+    const { title, slug, authorId, category } = course
 
-        const onInputChange = e => {
-            setCourse({ ...course, [e.target.title]: e.target.value })
-        }
+    const onInputChange = e => {
+        setCourse({ ...course, [e.target.title]: e.target.value })
+    }
 
-        useEffect(()=>{
-            loadCourse()
-        },[])
+    useEffect(() => {
+        loadCourse()
+    }, [])
 
-        const onSubmit = async e => {
-            e.preventDefault()
-            await axios.put("http://localhost:3003/courses", course)
-            History.push("/")
-        }
+    const onSubmit = async e => {
+        e.preventDefault()
+        await axios.put("http://localhost:3003/courses", course)
+        History.push("/")
+    }
 
-        const loadCourse= async ()=>{
-            const result = await axios.get(`http://localhost:3003/courses/${id}`)
-            setCourse(result.data)
-        }
+    const loadCourse = async () => {
+        const result = await axios.get(`http://localhost:3003/courses/${id}`)
+        setCourse(result.data)
+    }
 
-        return (
+    return (
+        <Fragment>
+            <div className="heading"></div>
             <div className="container" >
                 <div className="w-75 mx-auto shadow p-5" >
                     <h2 className="text-centre mb-4" >Edit Course</h2>
@@ -79,5 +81,6 @@ export const EditCourse = () => {
                     </form>
                 </div>
             </div>
-        )
-    }
+        </Fragment>
+    )
+}

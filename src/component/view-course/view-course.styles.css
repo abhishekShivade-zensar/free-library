@@ -6,10 +6,3 @@
     align-items: center;
     color: white;
 }
-
-.course-page-container {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}

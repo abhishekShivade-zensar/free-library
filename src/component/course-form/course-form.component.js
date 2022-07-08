@@ -4,31 +4,33 @@ import FormInput from '../form-input/form-input.component'
 import './course-form.styles.css'
 import { useNavigate } from 'react-router-dom'
 
-// const defaultFormFeilds = {
-//     title: '',
-//     slug: '',
-//     authorId: '',
-//     category: ''
-// }
+const defaultFormFeilds = {
+    title: '',
+    slug: '',
+    authorId: '',
+    category: ''
+}
 
-export const CourseForm = ({courses}) => {
+export const CourseForm = () => {
     // const [formFeilds, setFormFeilds] = useState(defaultFormFeilds)
 
     let History=useNavigate()
-    const [course,setCourse]=useState({
-        title:"",
-        slug:"",
-        authorId:"",
-        category:""
-    })
-
-    // const { title, slug, authorId, category } = formFeilds
-
-    const {title,slug,authorId,category}=course
-
-    // const resetFormFeilds = () => {
-    //     setFormFeilds(defaultFormFeilds)
+    const [course,setCourse]=useState(defaultFormFeilds
+        // {
+    //     title:"",
+    //     slug:"",
+    //     authorId:"",
+    //     category:""
     // }
+    )
+
+    const { title, slug, authorId, category } = course
+
+    // const {title,slug,authorId,category}=course
+
+    const resetFormFeilds = () => {
+        setCourse(defaultFormFeilds)
+    }
     
     // const handleChange = (event) => {
     //     const { name, value } = event.target
@@ -66,6 +68,7 @@ export const CourseForm = ({courses}) => {
         e.preventDefault()
         await axios.post("http://localhost:3003/courses",course)
         History.push("/")
+        resetFormFeilds()
     }
 
     return (
