@@ -6,6 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm run start:dev`
+
+Runs the app and the backend Api.
+
+Open [http://localhost:3003/courses] to view Api Resources
+open [http://localhost:3003] to view Home of Api
+Open [http://localhost:3000/] to view App
+
 ### `npm start`
 
 Runs the app in the development mode.\
